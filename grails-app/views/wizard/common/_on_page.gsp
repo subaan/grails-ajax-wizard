@@ -20,6 +20,8 @@
 <script type="text/javascript">
         function onPage() {
                 if (console) {
+                var queryString = $('#wizard').serialize();
+                console.log("queryString: " +queryString );
                         console.log('calling onPage() which can be used to attach generic javascript handlers to DOM elements of a rendered page / partial');
                 }
         }

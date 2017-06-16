@@ -92,6 +92,7 @@ class WizardController {
 			}
 			on("next") {  
                             command.fieldOne = params.fieldOne
+                            flow.command = command
 			// put your bussiness logic (if applicable) in here
                         println("on page 1: "+params)
                         println("on page 1: "+params.fieldOne)
@@ -127,6 +128,7 @@ class WizardController {
 				success()
 			}
 			on("next"){   
+                        flow.command = command
                             
 
                             // put your bussiness logic (if applicable) in here
@@ -152,6 +154,7 @@ class WizardController {
 				success()
 			}
 			on("next") {   
+                        flow.command = command
                             println("on page 3: "+params)
                         }.to "pageFour"
 			on("previous").to "pageTwo"
