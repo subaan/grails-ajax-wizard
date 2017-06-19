@@ -1,10 +1,6 @@
 package com.example
 
 /**
- * Created with IntelliJ IDEA.
- * User: Nicole
- * Date: 4/25/14
- * Time: 11:13 AM
  * To change this template use File | Settings | File Templates.
  */
 

@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.TestCommand
+import com.example.Error      
 /**
  * ajaxflow Controller
  *
@@ -38,6 +39,7 @@ class WizardController {
 	 */
 	def pagesFlow = {
             TestCommand command = new TestCommand()
+            Error fromError = new Error()
 		// start the flow
 		onStart {
 			// Grom a development message
@@ -82,22 +84,22 @@ class WizardController {
 
 		// first wizard page
 		pageOne {
-			render(view: "_page_one")
+			render(view: "_page_one", model: [fromError: fromError])
 			onRender {
 				// Grom a development message
 				if (pluginManager.getGrailsPlugin('grom')) ".rendering the partial: pages/_page_one.gsp".grom()
 
 				flow.page = 1
 				success()
-			}
+			}                        
 			on("next") {  
                             command.fieldOne = params.fieldOne
                             flow.command = command
 			// put your bussiness logic (if applicable) in here
                         println("on page 1: "+params)
-                        println("on page 1: "+params.fieldOne)
+                        println("first param value: "+params.fieldOne)
                         
-			}.to "pageTwo"
+			}.to "pageValidate"
 			on("toPageTwo") {
                             
 
@@ -188,6 +190,28 @@ class WizardController {
 				flow.page = 5
 			}.to "save"
 		}
+                
+                pageValidate {
+			action {
+                            if(params.fieldOne) {
+                                println("have value")
+                                success()
+                            } else {
+                                fromError.name = "FIELD_ERROR"
+                                String[] fileWrite = new String[2];
+                                fileWrite[0] = "Firstname not empty";
+                                fileWrite[1] = "Lastname not empty";
+                                fromError.message = fileWrite
+                                flow.fromError = fromError
+                                
+                                println("Empty value error")
+                                flow.error = true
+                                failure()
+                            }
+                        }
+                        on("failure").to "pageOne"
+                        on("success").to "pageTwo"
+                }
 
 		// save action
 		save {
