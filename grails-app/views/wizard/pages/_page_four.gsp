@@ -13,5 +13,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae porta jus
 </p>
 <p>
 Mauris euismod felis in arcu mattis accumsan. Cras luctus feugiat lectus, ut blandit nisi ullamcorper sit amet. In dapibus tristique justo, nec egestas arcu ullamcorper vitae. Phasellus sagittis pharetra lorem non convallis. Curabitur pulvinar tellus non arcu vestibulum in elementum ante varius. Proin est magna, sollicitudin at dictum ut, gravida at sem. Sed in urna massa. Aliquam et urna ac erat malesuada rutrum tincidunt vitae purus. Ut mollis nisl vel enim condimentum dapibus. Etiam tristique augue ullamcorper sem placerat vitae congue nibh semper. Maecenas in adipiscing purus. Sed sem eros, convallis vel mollis pretium, consectetur sed ligula. Aliquam erat volutpat. Donec aliquet purus eget nunc dapibus in semper magna malesuada. Nunc ornare egestas elementum. Pellentesque vulputate commodo est, vel sagittis libero molestie non. In hac habitasse platea dictumst. Ut pharetra quam quis nunc eleifend quis sodales justo molestie. Nunc eu bibendum lectus.
+<af:ajaxButton name="toSubmit" value="to page 4!" afterSuccess="onPage();" />
 </p>
 </af:page>

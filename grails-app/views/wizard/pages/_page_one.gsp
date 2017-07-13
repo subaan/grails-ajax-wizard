@@ -16,7 +16,9 @@
             </div>
         </g:if>
     </g:if>
+<uploadr:add name="mySecondUploadr" path="/tmp/uploadr/mySecondUploadr"  direction="up" maxVisible="5"  model="[booleanOne:true, variableTwo: 'foo', variableThree: 'bar', variableFour: 4, myObject: someObject]">
 
+</uploadr:add>
     <input type="text" name="fieldOne" value="${fieldValue(bean: command, field: 'fieldOne')}"/>
     <input type="text" name="fieldTwo" value="${fieldValue(bean: command, field: 'fieldTwo')}"/>
 

@@ -186,9 +186,8 @@ class WizardController {
 			on("toPageOne").to "pageOne"
 			on("toPageTwo").to "pageTwo"
 			on("toPageThree").to "pageThree"
-			on("toPageFive") {
-				flow.page = 5
-			}.to "save"
+                        on("toSubmit").to "submitPage"
+			
 		}
                 
                 pageValidate {
@@ -211,6 +210,27 @@ class WizardController {
                         }
                         on("failure").to "pageOne"
                         on("success").to "pageTwo"
+                }
+                submitPage {
+                    
+                    render(view: "_page_four")
+			onRender {
+                            println("submit page")
+				// Grom a development message
+				if (pluginManager.getGrailsPlugin('grom')) ".rendering the partial pages/_page_four.gsp".grom()
+
+				flow.page = 4
+				success()
+			}
+			on("next") {
+                            flow.page = 5
+			}.to "finalPage"
+			on("previous").to "pageThree"
+			on("toPageOne").to "pageOne"
+			on("toPageTwo").to "pageTwo"
+			on("toPageThree").to "pageThree"
+			on("toSubmit").to "submitPage"
+                    
                 }
 
 		// save action
@@ -269,7 +289,13 @@ class WizardController {
 				if (pluginManager.getGrailsPlugin('grom')) ".rendering the partial pages/_final_page.gsp".grom()
 				
 				success()
-			}
+                            }
+                        on("previous").to "pageFour"
+                        on("toPageOne").to "pageOne"
+                        on("toPageTwo").to "pageTwo"
+                        on("toPageThree").to "pageThree"
+                        on("toPageFour").to "pageFour"
+                        on("toPageFive").to "save"
 		}
 	}
 }

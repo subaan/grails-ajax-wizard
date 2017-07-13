@@ -48,7 +48,14 @@ grails.project.dependency.resolution = {
             export = false
         }
         runtime ":hibernate:3.6.10.16" // or ":hibernate:3.6.10.16"
-        runtime ":jquery:1.8.0"
+        runtime ":jquery:1.11.1"
         compile ':webflow:2.0.8.1'
+        compile ':cache:1.1.8'
+        
+        compile ":asset-pipeline:1.9.9"
+        compile ":sass-asset-pipeline:1.9.0"
+        compile ":uploadr:1.2.11"
     }
 }
+
+//grails.plugin.location.uploadr = '../grails-uploadr'
